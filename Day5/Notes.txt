@@ -1,0 +1,43 @@
+What are the Middlewares in Nodejs?
+all about middlewares in node js and express js
+
+Middleware means anything you put in the middle of one layer of the software and another. Each middleware has access to the HTTP request and response for each route (or path) it’s attached to. middleware can either terminate the HTTP request or pass it on to another middleware function using next . \
+
+There are a total of five types of middleware in nodejs are follows:-
+1. Application-level middleware “app.use”
+
+2. Router level middleware “router.use”
+
+3. Built-in middleware “express.static,express.json,express.urlencoded”
+
+4. Error handling middleware “app.use(err,req,res,next)”
+
+5. Third party middleware “bodyparser,cookieparser”
+
+Now we will understand every Middleware with their use case :-
+
+Application level middleware :-
+Bind application-level middleware to an instance of the app object by using the app.use() and app.METHOD() functions, where METHOD is the HTTP method of the request that the middleware function handles (such as GET, PUT, or POST) in lowercase.
+
+Application has the method listen and some other which router doesn’t have. Application “does” the main thing, while route only groups some routes, and provides encapsulation (see Manohar’s answer with example). Routes in router don’t necessarily know in advance what will be its full route.
+
+Router level middleware:-
+Router-level middleware works in the same way as application-level middleware, except it is bound to an instance of express.Router().
+
+const router = express.Router()
+
+Load router-level middleware by using the router.use() and router.METHOD() functions.
+
+Error Handling Middleware :-
+Express JS comes with default error handling params, defines error-handling middleware functions in the same way as other middleware functions, except error-handling functions, have four arguments instead of three
+
+Third-party Middlewares :-
+In some cases, we will be adding some extra features to our backend
+
+Install the Node.js module for the required functionality, then load it in your app at the application level or at the router level.
+
+Example: body-parser
+
+All middlewares will populate the req.body property with the parsed body when the Content-Type request header.
+
+app.use({urlencoded:false})
